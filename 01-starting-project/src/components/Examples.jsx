@@ -2,6 +2,7 @@ import TabButton from "../components/TabButton.jsx";
 import { useState } from "react";
 import { EXAMPLES } from "../data.js";
 import Section from "./Section.jsx";
+import Tabs from "./Tabs.jsx";
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -11,33 +12,37 @@ export default function Examples() {
     console.log(selectedButton);
   }
   return (
-    <Section title="Examples"  id="examples">
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === "components"}
-          onSelect={() => handleSelect("components")}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "jsx"}
-          onSelect={() => handleSelect("jsx")}
-        >
-          Jsx
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "props"}
-          onSelect={() => handleSelect("props")}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "state"}
-          onSelect={() => handleSelect("state")}
-        >
-          State
-        </TabButton>
-      </menu>
+    <Section title="Examples" id="examples">
+      <Tabs
+        buttons={
+          <>
+            <TabButton
+              isSelected={selectedTopic === "components"}
+              onSelect={() => handleSelect("components")}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "jsx"}
+              onSelect={() => handleSelect("jsx")}
+            >
+              Jsx
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "props"}
+              onSelect={() => handleSelect("props")}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "state"}
+              onSelect={() => handleSelect("state")}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      />
       {!selectedTopic ? (
         <p>Please select a topic</p>
       ) : (
@@ -50,6 +55,5 @@ export default function Examples() {
         </div>
       )}
     </Section>
-    
   );
 }
